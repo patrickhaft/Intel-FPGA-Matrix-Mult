@@ -219,13 +219,13 @@ bool init_opencl() {
     // For matrix A, each device only needs the rows corresponding
     // to the rows of the output matrix. We specifically
     // assign this buffer to the first bank of global memory.
-    input_a_buf[i] = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_BANK_1_INTEL,
+    input_a_buf[i] = clCreateBuffer(context, CL_MEM_READ_ONLY ,
         rows_per_device[i] * A_width * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for input A");
 
     // For matrix B, each device needs the whole matrix. We specifically
     // assign this buffer to the second bank of global memory.
-    input_b_buf[i] = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_MEM_BANK_2_INTEL,
+    input_b_buf[i] = clCreateBuffer(context, CL_MEM_READ_ONLY ,
         B_height * B_width * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for input B");
 
@@ -234,7 +234,7 @@ bool init_opencl() {
     // although it is not material to performance to do so because
     // the reads from the input matrices are far more frequent than the
     // write to the output matrix.
-    output_buf[i] = clCreateBuffer(context, CL_MEM_WRITE_ONLY | CL_MEM_BANK_1_INTEL,
+    output_buf[i] = clCreateBuffer(context, CL_MEM_WRITE_ONLY ,
         rows_per_device[i] * C_width * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for output");
 #else
