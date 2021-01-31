@@ -49,7 +49,7 @@ CXXFLAGS += -g
 else
 CXXFLAGS += -O2
 endif
-CXXFLAGS += -DBLOCK_SIZE=128
+
 # Compiler
 CXX := g++
 
