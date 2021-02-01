@@ -51,8 +51,8 @@ CXXFLAGS += -O2
 endif
 
 # add blocksize if it was set; default is 64
-blocksize = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
-CXXFLAGS += -DBLOCK_SIZE=$(call blocksize,64)
+# blocksize = `arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}}`
+# CXXFLAGS += -DBLOCK_SIZE=$(call blocksize,64)
 
 # Compiler
 CXX := g++
